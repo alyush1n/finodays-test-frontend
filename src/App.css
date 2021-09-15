@@ -1,0 +1,36 @@
+@import '~antd/dist/antd.css';
+
+@font-face {
+    font-family: "Raleway";
+    src: url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+}
+
+.container {
+    font-family: 'Raleway', sans-serif;
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.columns {
+    display: flex;
+    align-items: center;
+}
+
+.col {
+    width: 50%;
+}
+
+.inputs {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+}
+
+.content {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
