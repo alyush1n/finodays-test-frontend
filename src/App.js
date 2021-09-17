@@ -3,6 +3,7 @@ import { Button, Input, InputNumber } from "antd";
 import "./App.css";
 import SelectView from "./components/SelectView";
 import { getPrice } from "./fetch";
+import carModelsValues from './models'
 const params = [
   //   {
   //     type: "year",
@@ -87,7 +88,7 @@ const params = [
     type: "fuel",
     placeholder: "Топливо",
     values: [
-      { en: "gas", ru: "Газ" },
+      { en: "gas", ru: "Бензин" },
       { en: "diesel", ru: "Дизель" },
       { en: "other", ru: "Другое" },
       { en: "hybrid", ru: "Гибрид" },
@@ -211,6 +212,7 @@ const params = [
 
 const App = () => {
   const [year, setYear] = useState(2010);
+  const [model, setModel] = useState("");
   const [odometer, setOdometr] = useState(3000);
   const [urlParams, setUrlParams] = useState({});
   const [carPrice, setCarPrice] = useState("")
@@ -230,10 +232,25 @@ const App = () => {
               Давайте оценим ваш автомобиль
             </h1>
             <div style={{ display: "flex", marginBottom: "20px" }}>
-              <div style={{ width: "330px", fontSize: "24px" }}>
-                Модель машины:
+              <div style={{ width: "230px", fontSize: "24px" }}>
+                Модель машины: 
               </div>{" "}
-              <Input type="text" />
+              {/* <Input type="text" onChange={v=>setModel(v.target.value)} /> */}
+              <SelectView
+                  placeholder={"Модель"}
+                  type={"model"}
+                  values={carModelsValues}
+                  key={"model"}
+                  style={{ minWidth: "350px" }}
+                  select={(key, value) => {
+                    const obj = {
+                        ...urlParams
+                    };
+                    obj[key] = value;
+                    setUrlParams(obj);
+                  }}
+                />
+                  
             </div>
             <div className="inputs">
               {/* <div> */}
@@ -275,6 +292,7 @@ const App = () => {
                 onClick={async () => {
                     urlParams["year"] = year
                     urlParams["odometer"] = odometer
+                    // urlParams["model"] = model
                     const price = await getPrice(urlParams)
                     setCarPrice(price)
                 }}

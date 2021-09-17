@@ -7,7 +7,7 @@ export const getPrice = async (carParams) => {
             url.searchParams.append(param, carParams[param]);
         })
         // fetch(url)
-        // console.log(url.href)
+        console.log(url.href)
         const resp = await fetch(url.href)
         const json = await resp.json()
         console.log(json?.price)
