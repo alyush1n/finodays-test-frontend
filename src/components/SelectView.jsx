@@ -4,13 +4,16 @@ import {Select} from "antd";
 const {Option} = Select;
 
 const SelectView = (props) => {
+    console.log(props.values)
     return (
         <Select
             style={{width: "210px"}}
             showSearch
             placeholder={props.placeholder}
             optionFilterProp="children">
-            <Option value="123">123</Option>
+            {props.values.map(v => (
+                <Option value={v}>{v}</Option>
+            ))}
         </Select>
     );
 };
