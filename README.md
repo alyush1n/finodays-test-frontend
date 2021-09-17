@@ -1,10 +1,11 @@
-# Getting Started with Create React App
+# Стек технологий
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* React
+* Javascript
 
-## Available Scripts
+## Доступные скрипты
 
-In the project directory, you can run:
+Запустить проект:
 
 ### `yarn start`
 
